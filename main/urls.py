@@ -1,3 +1,7 @@
+# -*- coding: utf-8 -*-
+"""
+URL dispatcher config for {{ project_name|title }} Django project.
+"""
 from django.conf.urls import patterns, include, url
 
 # Uncomment the next two lines to enable the admin:
