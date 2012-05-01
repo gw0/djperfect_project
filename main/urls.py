@@ -15,6 +15,10 @@ urlpatterns = []
 if settings.DEBUG:
     urlpatterns += staticfiles_urlpatterns()
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+    urlpatterns += patterns('',
+        url(r'^favicon\.ico$', 'django.views.generic.simple.redirect_to', {'url': settings.STATIC_URL+'img/favicon.ico'}),
+        url(r'^robots\.txt$', 'django.views.generic.simple.redirect_to', {'url': settings.STATIC_URL+'robots.txt'}),
+    )
 
 urlpatterns += patterns('',
     # Examples:
