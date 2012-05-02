@@ -6,6 +6,14 @@ Common settings for {{ project_name|title }} Django project.
     http://docs.djangoproject.com/en/1.4/ref/settings/
 """
 
+# Settings helpers
+import os
+PROJECT_ROOT = os.path.dirname(os.path.abspath(os.path.join(__file__, os.pardir)))
+def path_prepare(*args):
+    path = os.path.join(*args)
+    if not os.path.exists(path):
+        os.makedirs(path)
+    return path
 _ = lambda s: s
 
 
@@ -80,7 +88,7 @@ USE_L10N = True
 
 
 ### Static files collected from apps' "static/" and STATICFILES_DIRS directories
-STATIC_ROOT = ''
+STATIC_ROOT = path_prepare(PROJECT_ROOT, 'www', 'static')
 STATIC_URL = '/static/'
 
 STATICFILES_FINDERS = (
@@ -91,11 +99,12 @@ STATICFILES_FINDERS = (
 
 STATICFILES_DIRS = (
     # Always use absolute paths with forward slashes, not relative paths.
+    path_prepare(PROJECT_ROOT, 'main', 'static'),
 )
 
 
 ### Media files uploaded by users
-MEDIA_ROOT = ''
+MEDIA_ROOT = path_prepare(PROJECT_ROOT, 'www', 'media')
 MEDIA_URL = '/media/'
 
 
@@ -108,6 +117,7 @@ TEMPLATE_LOADERS = (
 
 TEMPLATE_DIRS = (
     # Always use absolute paths with forward slashes, not relative paths.
+    path_prepare(PROJECT_ROOT, 'main', 'templates'),
 )
 
 TEMPLATE_CONTEXT_PROCESSORS = (
