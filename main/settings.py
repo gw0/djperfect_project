@@ -1,26 +1,26 @@
 # -*- coding: utf-8 -*-
 """
-Settings for {{ project_name|title }} Django project.
+Common settings for {{ project_name|title }} Django project.
 """
 
-DEBUG = True
+DEBUG = False
 TEMPLATE_DEBUG = DEBUG
 
 ADMINS = (
-    # ('Your Name', 'your_email@example.com'),
+    #('{{ project_name|title }} Webmaster', 'webmaster@localhost'),
 )
-
 MANAGERS = ADMINS
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.', # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
-        'NAME': '',                      # Or path to database file if using sqlite3.
-        'USER': '',                      # Not used with sqlite3.
-        'PASSWORD': '',                  # Not used with sqlite3.
-        'HOST': '',                      # Set to empty string for localhost. Not used with sqlite3.
-        'PORT': '',                      # Set to empty string for default. Not used with sqlite3.
-    }
+    #'default': {
+    #    'ENGINE': 'django.db.backends.postgresql_psycopg2', # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
+    #    'NAME': '{{ project_name }}',               # Or path to database file if using sqlite3.
+    #    'USER': '{{ project_name }}',               # Not used with sqlite3.
+    #    'PASSWORD': 'SecretRandomPassword', # Not used with sqlite3.
+    #    'HOST': 'localhost',                # Set to empty string for localhost. Not used with sqlite3.
+    #    'PORT': '',                         # Set to empty string for default. Not used with sqlite3.
+    #    'SCHEMA': '{{ project_name }}',             # Can be used with PostgreSQL.
+    #}
 }
 
 # Local time zone for this installation. Choices can be found here:
@@ -84,7 +84,7 @@ STATICFILES_FINDERS = (
 )
 
 # Make this unique, and don't share it with anybody.
-SECRET_KEY = '{{ secret_key }}'
+SECRET_KEY = 'SecretRandomKeyOverridenByLocalSettings'
 
 # List of callables that know how to import templates from various sources.
 TEMPLATE_LOADERS = (
@@ -154,3 +154,14 @@ LOGGING = {
         },
     }
 }
+
+# Import environment specific settings excluded from version control
+try:
+    import sys
+    if not any( k.startswith('main.settings_')  for k in sys.modules.keys() ):
+        from main.settings_local import *
+except ImportError:
+    try:
+        from main.settings_{{ project_name }} import *
+    except ImportError:
+        pass

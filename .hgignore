@@ -3,3 +3,8 @@ syntax: glob
 *.pyc
 *.pyo
 *.db
+include/python*
+lib/python*
+main/settings_*
+www/media/
+www/static/
