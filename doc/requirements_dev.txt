@@ -1,0 +1,9 @@
+# Development requirements for {{ project_name|title }} Django project
+-r requirements.txt
+
+# Dependencies
+
+# Additional
+ipython  # improved Python shell
+docutils  # for admindocs
+

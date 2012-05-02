@@ -1,0 +1,8 @@
+# Production requirements for {{ project_name|title }} Django project
+-r requirements.txt
+
+# Dependencies
+
+# Additional
+psycopg2  # for PostgreSQL database
+

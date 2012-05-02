@@ -1,0 +1,9 @@
+# Common requirements for deploying {{ project_name|title }} Django project
+
+# General
+django >= 1.4
+
+# Dependencies
+
+# Django apps
+
