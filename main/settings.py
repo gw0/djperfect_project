@@ -6,6 +6,8 @@ Common settings for {{ project_name|title }} Django project.
     http://docs.djangoproject.com/en/1.4/ref/settings/
 """
 
+_ = lambda s: s
+
 
 ### Common configuration
 DEBUG = False
@@ -31,17 +33,31 @@ DATABASES = {
 SITE_ID = 1
 
 # Unique secret key for safe cryptography (don't share it with anybody)
-SECRET_KEY = 'SecretRandomKeyOverridenByLocalSettings'
+#SECRET_KEY = 'SecretRandomKeyOverridenByLocalSettings'
 
 
-### Python paths used by Django
+### Email configuration
+EMAIL_SUBJECT_PREFIX = '[{{ project_name|title }}] '
+#EMAIL_HOST = 'localhost'
+#DEFAULT_FROM_EMAIL = '{{ project_name|title }} Webmaster <webmaster@localhost>'
+#SERVER_EMAIL = DEFAULT_FROM_EMAIL
+
+
+### Python paths and sane fixes for default Django settings
 WSGI_APPLICATION = 'main.wsgi.application'
 ROOT_URLCONF = 'main.urls'
+#FORMAT_MODULE_PATH = 'main.formats'
+
+FORCE_SCRIPT_NAME = ''
+URL_VALIDATOR_USER_AGENT = 'Django'
+LOGIN_REDIRECT_URL = '/admin/'
+LOGIN_URL = '/admin/'
+LOGOUT_URL = '/admin/logout/'
 
 
 ### Local time zone (under Windows it must be set to your system time zone)
 # http://en.wikipedia.org/wiki/List_of_tz_zones_by_name
-TIME_ZONE = 'America/Chicago'
+TIME_ZONE = 'UTC'
 
 # If you set this to False, Django will not use timezone-aware datetimes.
 USE_TZ = True
@@ -49,7 +65,10 @@ USE_TZ = True
 
 ### Internationalization and localization
 # http://www.i18nguy.com/unicode/language-identifiers.html
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'en'
+LANGUAGES = (
+    ('en', _('English')),
+)
 
 # If you set this to False, Django will make some optimizations so as not
 # to load the internationalization machinery.
@@ -77,7 +96,7 @@ STATICFILES_DIRS = (
 
 ### Media files uploaded by users
 MEDIA_ROOT = ''
-MEDIA_URL = ''
+MEDIA_URL = '/media/'
 
 
 ### Templates
@@ -89,6 +108,17 @@ TEMPLATE_LOADERS = (
 
 TEMPLATE_DIRS = (
     # Always use absolute paths with forward slashes, not relative paths.
+)
+
+TEMPLATE_CONTEXT_PROCESSORS = (
+    'django.contrib.auth.context_processors.auth',
+    'django.core.context_processors.debug',
+    'django.core.context_processors.i18n',
+    'django.core.context_processors.media',
+    'django.core.context_processors.static',
+    'django.core.context_processors.tz',
+    #'django.core.context_processors.request',
+    'django.contrib.messages.context_processors.messages',
 )
 
 
@@ -106,6 +136,7 @@ MIDDLEWARE_CLASSES = (
 
 ### Apps
 INSTALLED_APPS = (
+    # Official Django apps
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
@@ -115,6 +146,23 @@ INSTALLED_APPS = (
     # Comment out to disable the Django admin interface (also check urls.py):
     'django.contrib.admin',
     'django.contrib.admindocs',
+    # Other useful official Django apps (check their documentation):
+    #'django.contrib.comments',
+    #'django.contrib.sitemaps',
+
+    # General third-party apps
+    # Uncomment to enable the database migration layer:
+    #'south',
+    # Uncomment to enable flexible asset management (JS, CSS, LESS, SASS...):
+    #'django_assets',
+    # Other useful third-party apps (for debugging and alternative logging):
+    #'debug_toolbar',
+    #'sentry',
+    #'sentry.client',
+
+    # Add other third-party apps here
+
+    # Add your apps here
 )
 
 # App ...
