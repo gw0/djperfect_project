@@ -1,0 +1,7 @@
+License: All rights reserved
+
+Copyright (c) {% now 'Y' %} - CopyrightHolder [http://{{ project_name }}.localhost/] <user@localhost>
+
+All rights reserved. Everything is prohibited without an explicit permission from the copyright holder.
+
+The copyright holder retains all rights in the copyright work, including without limitation, the right to copy, distribute, publish, sell, display or modify the copyright work, and to transfer, assign or grant license of any such rights.

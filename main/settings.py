@@ -5,6 +5,8 @@ Common settings for {{ project_name|title }} Django project.
 .. seealso::
     http://docs.djangoproject.com/en/1.4/ref/settings/
 """
+__author__ = 'CopyrightHolder [http://{{ project_name }}.localhost/] <user@localhost>'
+__license__ = 'All rights reserved <doc/license-AllRightsReserved.txt>'
 
 # Settings helpers
 import os
