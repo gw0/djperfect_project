@@ -2,8 +2,11 @@
 -r requirements.txt
 
 # Dependencies
+docutils  # for admindocs
+
+# Django apps
+django-debug-toolbar
 
 # Additional
 ipython  # improved Python shell
-docutils  # for admindocs
 

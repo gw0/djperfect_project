@@ -167,10 +167,6 @@ INSTALLED_APPS = (
     'south',
     # Uncomment to enable flexible asset management (JS, CSS, LESS, SASS...):
     #'django_assets',
-    # Other useful third-party apps (for debugging and alternative logging):
-    #'debug_toolbar',
-    #'sentry',
-    #'sentry.client',
 
     # Add other third-party apps here
 

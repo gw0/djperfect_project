@@ -3,6 +3,8 @@
 
 # Dependencies
 
+# Django apps
+
 # Additional
 psycopg2  # for PostgreSQL database
 #flup  # for deploying as FastCGI Django
