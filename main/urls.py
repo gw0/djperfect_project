@@ -16,6 +16,7 @@ if settings.DEBUG:
     urlpatterns += static.static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
     urlpatterns += patterns('',
         url(r'^favicon\.ico$', 'django.views.generic.simple.redirect_to', {'url': settings.STATIC_URL+'img/favicon.ico'}),
+        url(r'^apple-touch-icon\.png$', 'django.views.generic.simple.redirect_to', {'url': settings.STATIC_URL+'img/apple-touch-icon.png'}),
         url(r'^robots\.txt$', 'django.views.generic.simple.redirect_to', {'url': settings.STATIC_URL+'robots.txt'}),
     )
 
