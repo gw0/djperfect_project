@@ -6,4 +6,5 @@ django >= 1.4
 # Dependencies
 
 # Django apps
+south
 

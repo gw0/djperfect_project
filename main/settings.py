@@ -163,8 +163,8 @@ INSTALLED_APPS = (
     #'django.contrib.sitemaps',
 
     # General third-party apps
-    # Uncomment to enable the database migration layer:
-    #'south',
+    # Comment out to disable the database migration layer:
+    'south',
     # Uncomment to enable flexible asset management (JS, CSS, LESS, SASS...):
     #'django_assets',
     # Other useful third-party apps (for debugging and alternative logging):
